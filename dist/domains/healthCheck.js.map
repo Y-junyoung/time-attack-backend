@@ -1,1 +1,0 @@
-{"version":3,"file":"healthCheck.js","sourceRoot":"","sources":["../../src/domains/healthCheck.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AAEjC,MAAM,WAAW,GAAG,IAAA,gBAAM,GAAE,CAAC;AAE7B,WAAW,CAAC,GAAG,CAAC,GAAG,EAAE,GAAG,EAAE;IACxB,OAAO,CAAC,GAAG,CAAC,cAAc,CAAC,CAAC;IAC5B,OAAO,cAAc,CAAC;AACxB,CAAC,CAAC,CAAC;AAEH,kBAAe,WAAW,CAAC"}
