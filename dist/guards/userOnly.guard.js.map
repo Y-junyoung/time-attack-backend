@@ -1,1 +1,0 @@
-{"version":3,"file":"userOnly.guard.js","sourceRoot":"","sources":["../../src/guards/userOnly.guard.ts"],"names":[],"mappings":";;AAEA,SAAwB,QAAQ,CAC9B,GAAY,EACZ,CAAW,EACX,IAAkB;IAElB,MAAM,IAAI,GAAG,GAAG,CAAC,IAAI,CAAC;IACtB,IAAI,CAAC,IAAI;QAAE,MAAM,IAAI,KAAK,CAAC,cAAc,CAAC,CAAC;IAE3C,IAAI,EAAE,CAAC;AACT,CAAC;AATD,2BASC"}
