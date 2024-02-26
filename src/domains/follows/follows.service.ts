@@ -6,7 +6,7 @@ import {
 } from "./follows.type";
 
 const followUser = async (followUserData: FollowUserData) => {
-  const { followingId, userId } = followUserData;
+  const { followerId, userId } = followUserData;
 
   // 팔로잉 할 Id를 가져와서 이메일 추출
   const followingUser = await prismaClient.user.findUnique({
@@ -14,9 +14,11 @@ const followUser = async (followUserData: FollowUserData) => {
   });
   if (!followingUser) throw new Error("유저 정보를 불러올 수 없습니다.");
 
-  const followerId = followingUser.email;
+  const followingId = followingUser.email;
+
   // 내가 팔로잉 --> 팔로잉 증가
   // 상대방에게는 팔로워 증가
+
   const following = await prismaClient.follows.create({
     data: { followerId, followingId },
   });
@@ -25,7 +27,7 @@ const followUser = async (followUserData: FollowUserData) => {
 };
 
 const unFollowUser = async (unFollowUserData: UnFollowUserData) => {
-  const { followingId, userId } = unFollowUserData;
+  const { followerId, userId } = unFollowUserData;
 
   // 언팔로잉 할 Id를 가져와서 이메일 추출
   const unFollowingUser = await prismaClient.user.findUnique({
@@ -33,7 +35,7 @@ const unFollowUser = async (unFollowUserData: UnFollowUserData) => {
   });
   if (!unFollowingUser) throw new Error("유저 정보를 불러올 수 없습니다.");
 
-  const followerId = unFollowingUser.email;
+  const followingId = unFollowingUser.email;
 
   const unFollowing = await prismaClient.follows.delete({
     where: { followerId_followingId: { followerId, followingId } },
@@ -43,14 +45,14 @@ const unFollowUser = async (unFollowUserData: UnFollowUserData) => {
 };
 
 const deleteFollower = async (deleteFollowerData: DeleteFollowerData) => {
-  const { followerId, userId } = deleteFollowerData;
+  const { followingId, userId } = deleteFollowerData;
 
   const deletedFollowerUser = await prismaClient.user.findUnique({
     where: { id: userId },
   });
   if (!deletedFollowerUser) throw new Error("유저 정보를 불러올 수 없습니다.");
 
-  const followingId = deletedFollowerUser.email;
+  const followerId = deletedFollowerUser.email;
 
   const deletedFollower = await prismaClient.follows.delete({
     where: { followerId_followingId: { followingId, followerId } },

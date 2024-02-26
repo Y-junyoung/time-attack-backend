@@ -46,9 +46,9 @@ model Tweet {
 }
 
 model Follows {
-  follower    UserProfile @relation("Followers", fields: [followerId], references: [userId])
+  following   UserProfile @relation("Followings", fields: [followerId], references: [userId])
   followerId  String
-  following   UserProfile @relation("Followings", fields: [followingId], references: [userId])
+  follower    UserProfile @relation("Followers", fields: [followingId], references: [userId])
   followingId String
 
   @@id([followerId, followingId])

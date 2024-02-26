@@ -1,14 +1,14 @@
 export type FollowUserData = {
   userId: number;
-  followingId: string;
+  followerId: string;
 };
 
 export type UnFollowUserData = {
   userId: number;
-  followingId: string;
+  followerId: string;
 };
 
 export type DeleteFollowerData = {
   userId: number;
-  followerId: string;
+  followingId: string;
 };

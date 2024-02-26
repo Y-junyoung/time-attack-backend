@@ -15,9 +15,9 @@ followsController.post(
   async (req, res, next) => {
     try {
       const userId = Number(req.params.userId);
-      const followingId = req.user!.email;
+      const followerId = req.user!.email;
       const followUserData: FollowUserData = {
-        followingId,
+        followerId,
         userId,
       };
 
@@ -36,9 +36,9 @@ followsController.delete(
   async (req, res, next) => {
     try {
       const userId = Number(req.params.userId);
-      const followingId = req.user!.email;
+      const followerId = req.user!.email;
       const unFollowUserData: UnFollowUserData = {
-        followingId,
+        followerId,
         userId,
       };
       const unFollowing = await followsService.unFollowUser(unFollowUserData);
@@ -55,11 +55,11 @@ followsController.delete(
   userOnly,
   async (req, res, next) => {
     try {
-      const followerId = req.user!.email;
+      const followingId = req.user!.email;
       const userId = Number(req.params.userId);
       const deleteFollowerData: DeleteFollowerData = {
         userId,
-        followerId,
+        followingId,
       };
 
       const deleteFollower = await followsService.deleteFollower(

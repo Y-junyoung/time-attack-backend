@@ -19,9 +19,9 @@ const followsController = (0, express_1.Router)();
 followsController.post("/followings/:userId", userOnly_guard_1.default, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = Number(req.params.userId);
-        const followingId = req.user.email;
+        const followerId = req.user.email;
         const followUserData = {
-            followingId,
+            followerId,
             userId,
         };
         const following = yield follows_service_1.default.followUser(followUserData);
@@ -34,9 +34,9 @@ followsController.post("/followings/:userId", userOnly_guard_1.default, (req, re
 followsController.delete("/followings/:userId", userOnly_guard_1.default, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = Number(req.params.userId);
-        const followingId = req.user.email;
+        const followerId = req.user.email;
         const unFollowUserData = {
-            followingId,
+            followerId,
             userId,
         };
         const unFollowing = yield follows_service_1.default.unFollowUser(unFollowUserData);
@@ -48,11 +48,11 @@ followsController.delete("/followings/:userId", userOnly_guard_1.default, (req, 
 }));
 followsController.delete("/followers/:userId", userOnly_guard_1.default, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const followerId = req.user.email;
+        const followingId = req.user.email;
         const userId = Number(req.params.userId);
         const deleteFollowerData = {
             userId,
-            followerId,
+            followingId,
         };
         const deleteFollower = yield follows_service_1.default.deleteFollower(deleteFollowerData);
         res.json(deleteFollower);
